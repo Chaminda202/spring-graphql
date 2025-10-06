@@ -1,0 +1,28 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: spring-graphql
+
+  datasource:
+    url: jdbc:mariadb://localhost:3306/graphql_db
+    username: admin
+    password: admin
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  flyway:
+    enabled: true
+    locations: classpath:migration/v1
+
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+  properties:
+    hibernate:
+      format_sql: true
