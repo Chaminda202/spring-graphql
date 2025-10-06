@@ -1,0 +1,15 @@
+query {
+    getProducts {
+        id
+        name
+        price
+    }
+
+    findProductByCategory(category: "Electronics") {
+        id
+        name
+        category
+        price
+        stock
+    }
+}
