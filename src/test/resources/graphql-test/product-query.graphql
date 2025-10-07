@@ -1,11 +1,33 @@
-query {
+query getProducts {
     getProducts {
         id
         name
         price
     }
+}
 
+query findProductByCategory {
     findProductByCategory(category: "Electronics") {
+        id
+        name
+        category
+        price
+        stock
+    }
+}
+
+mutation createProduct {
+    createProduct(name: "Test", category: "Stationary", price: 23.8, stock: 123) {
+        id
+        name
+        category
+        price
+        stock
+    }
+}
+
+mutation updateStock {
+    updateStock(id: "1", stock: 54) {
         id
         name
         category
