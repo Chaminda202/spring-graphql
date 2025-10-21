@@ -20,6 +20,12 @@ spring:
       enabled: true
       path: /graphiql
 
+  datetime:
+    scalars:
+      local-date-time:
+        format: yyyy-MM-dd'T'HH:mm:ss
+
+
   jpa:
     hibernate:
       ddl-auto: update

@@ -1,9 +1,15 @@
+scalar LocalDateTime
+scalar BigDecimal
+
 type Product {
     id: ID
     name: String
     category: String
     price: Float
     stock: Int
+    rating: Rating
+    discount: BigDecimal
+    listedDate: LocalDateTime
 }
 
 type User {
@@ -25,6 +31,7 @@ type Query {
     findProductByCategory(category: String): [Product]
     getUsers: [User]
     findUsersByEmail(email: String): [User]
+    findProduct(page: Int, size: Int): [Product]
 }
 
 type Mutation {
@@ -32,4 +39,21 @@ type Mutation {
     createProduct(name: String!,category: String!, price: Float, stock: Int): Product
     createUser(name: String!,email: String!): User
     createPost(userId: ID!, title: String,content: String): Post
+    createPrdct(productInput: ProductInput): Product
+}
+
+input ProductInput {
+    name: String
+    category: String
+    price: Float
+    stock: Int
+    rating: Rating
+    discount: BigDecimal
+    listedDate: LocalDateTime
+}
+
+enum Rating {
+    LOW,
+    MEDIUM,
+    HIGH
 }

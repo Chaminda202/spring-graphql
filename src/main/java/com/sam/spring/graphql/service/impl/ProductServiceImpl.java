@@ -1,9 +1,13 @@
 package com.sam.spring.graphql.service.impl;
 
 import com.sam.spring.graphql.entity.Product;
+import com.sam.spring.graphql.model.ProductInput;
 import com.sam.spring.graphql.repository.ProductRepository;
 import com.sam.spring.graphql.service.ProductService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +44,25 @@ public class ProductServiceImpl implements ProductService {
                 .stock(stock)
                 .build();
         return productRepository.save(product);
+    }
+
+    @Override
+    public Product createPrdct(ProductInput productInput) {
+        Product product = Product.builder()
+                .name(productInput.name())
+                .category(productInput.category())
+                .price(productInput.price())
+                .stock(productInput.stock())
+                .rating(productInput.rating())
+                .discount(productInput.discount())
+                .listedDate(productInput.listedDate())
+                .build();
+        return productRepository.save(product);
+    }
+
+    @Override
+    public Page<Product> findProduct(Integer page, Integer size) {
+        Pageable pageable =  PageRequest.of(page, size);
+        return productRepository.findAll(pageable);
     }
 }

@@ -1,0 +1,1 @@
+ALTER TABLE product ADD rating VARCHAR(20) DEFAULT NULL;

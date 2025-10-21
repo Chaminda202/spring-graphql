@@ -1,8 +1,10 @@
 package com.sam.spring.graphql.resource;
 
 import com.sam.spring.graphql.entity.Product;
+import com.sam.spring.graphql.model.ProductInput;
 import com.sam.spring.graphql.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -33,5 +35,15 @@ public class ProductResource {
     @MutationMapping
     public Product createProduct(@Argument String name, @Argument String category, @Argument Float price, @Argument Integer stock) {
         return productService.createProduct(name, category, price, stock);
+    }
+
+    @MutationMapping
+    public Product createPrdct(@Argument ProductInput productInput) {
+        return productService.createPrdct(productInput);
+    }
+
+    @QueryMapping
+    public Page<Product> findProduct(@Argument Integer page, @Argument Integer size) {
+        return productService.findProduct(page, size);
     }
 }

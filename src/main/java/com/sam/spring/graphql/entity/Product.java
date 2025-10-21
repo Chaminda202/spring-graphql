@@ -1,10 +1,11 @@
 package com.sam.spring.graphql.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.sam.spring.graphql.enums.Rating;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
@@ -20,4 +21,10 @@ public class Product {
     private String category;
     private Float price;
     private Integer stock;
+    @Enumerated(EnumType.STRING)
+    private Rating rating;
+
+    private BigDecimal discount;
+
+    private LocalDateTime listedDate;
 }
